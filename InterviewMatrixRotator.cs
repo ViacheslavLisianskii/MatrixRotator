@@ -54,14 +54,15 @@ namespace MatrixRotator
 
         public void OutputMatrix(int[][] matrix)
         {
-            var length1 = matrix.Length;
-            var length2 = matrix[0].Length;
-            for (long i = 0; i < length1; i++)
+            var rowLength = matrix.Length;
+            var colLength = matrix[0].Length;
+
+            for (long i = 0; i < rowLength; i++)
             {
-                for (long j = 0; j < length2; j++)
+                for (long j = 0; j < colLength; j++)
                 {
-                    var cout = matrix[i][j];
-                    Console.Write(j == length2 - 1 ? $"{cout} \n" : $"{cout} ");
+                    var value = matrix[i][j];
+                    Console.Write(j == colLength - 1 ? $"{value} \n" : $"{value} ");
                 }
             }
         }
