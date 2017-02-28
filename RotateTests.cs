@@ -11,7 +11,7 @@ namespace MatrixRotator
         public void TestCase1()
         {
             const int rotates = 1;
-            var actual = new[]
+            var matrix = new[]
             {
                 new[] {1, 2, 3, 4},
                 new[] {5, 6, 7, 8},
@@ -26,16 +26,16 @@ namespace MatrixRotator
                 new[] {9, 13, 14, 15}
             };
 
-            var result = _matrixRotator.Rotate(actual, rotates);
+            var actual = _matrixRotator.Rotate(matrix, rotates);
 
-            Assert.IsTrue(Compare(result, expected));
+            Assert.IsTrue(Compare(actual, expected));
         }
 
         [TestMethod]
         public void TestCase2()
         {
             const int rotates = 2;
-            var actual = new[]
+            var matrix = new[]
             {
                 new[] {1, 2, 3, 4},
                 new[] {5, 6, 7, 8},
@@ -50,16 +50,16 @@ namespace MatrixRotator
                 new[] {5, 9, 13, 14}
             };
 
-            var result = _matrixRotator.Rotate(actual, rotates);
+            var actual = _matrixRotator.Rotate(matrix, rotates);
 
-            Assert.IsTrue(Compare(result, expected));
+            Assert.IsTrue(Compare(actual, expected));
         }
 
         [TestMethod]
         public void TestCase3()
         {
             const int rotates = 7;
-            var actual = new[]
+            var matrix = new[]
             {
                 new[] {1, 2, 3, 4},
                 new[] {7, 8, 9, 10},
@@ -76,24 +76,24 @@ namespace MatrixRotator
                 new[] {4, 3, 2, 1}
             };
 
-            var result = _matrixRotator.Rotate(actual, rotates);
+            var actual = _matrixRotator.Rotate(matrix, rotates);
 
-            Assert.IsTrue(Compare(result, expected));
+            Assert.IsTrue(Compare(actual, expected));
         }
 
         [TestMethod]
         public void TestCase4()
         {
             const int rotates = 3;
-            var actual = new[] {new[] {1, 1}, new[] {1, 1}};
+            var matrix = new[] {new[] {1, 1}, new[] {1, 1}};
             var expected = new[] {new[] {1, 1}, new[] {1, 1}};
 
-            var result = _matrixRotator.Rotate(actual, rotates);
+            var actual = _matrixRotator.Rotate(matrix, rotates);
 
-            Assert.IsTrue(Compare(result, expected));
+            Assert.IsTrue(Compare(actual, expected));
         }
 
-        private static bool Compare(int[][] expected, int[][] actual)
+        private static bool Compare(int[][] expected, int[][] matrix)
         {
             var length1 = expected.Length;
             var length2 = expected[0].Length;
@@ -101,7 +101,7 @@ namespace MatrixRotator
             {
                 for (var j = 0; j < length2; j++)
                 {
-                    if (expected[i][j] != actual[i][j])
+                    if (expected[i][j] != matrix[i][j])
                     {
                         return false;
                     }
