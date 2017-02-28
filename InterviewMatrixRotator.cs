@@ -29,19 +29,19 @@ namespace MatrixRotator
     {
         public int[][] Rotate(int[][] matrix, int r)
         {
-            var length1 = matrix.Length;
-            var length2 = matrix[0].Length;
+            var rowLength = matrix.Length;
+            var colLength = matrix[0].Length;
+            var limit = rowLength > colLength ? colLength / 2 : rowLength / 2;
 
-            var limit = length1 > length2 ? length2 / 2 : length1 / 2;
             for (var i = 0; i < limit; i++)
             {
-                for (var x = 0; x < r % (2 * (length1 + length2 - 4 * i - 2)); x++)
+                for (var j = 0; j < r % (2 * (rowLength + colLength - 4 * i - 2)); j++)
                 {
                     int col, temp = matrix[i][i];
                     var row = col = i;
 
-                    for (; col < length2 - i - 1; col++) matrix[row][col] = matrix[row][col + 1];
-                    for (; row < length1 - i - 1; row++) matrix[row][col] = matrix[row + 1][col];
+                    for (; col < colLength - i - 1; col++) matrix[row][col] = matrix[row][col + 1];
+                    for (; row < rowLength - i - 1; row++) matrix[row][col] = matrix[row + 1][col];
                     for (; col > i; col--) matrix[row][col] = matrix[row][col - 1];
                     for (; row > i; row--) matrix[row][col] = matrix[row - 1][col];
 
